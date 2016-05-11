@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'l#pm8d*xj3au@a7grrjv$g6))cu@**_0=!0otpzpq41nbmlupw'
+SECRET_KEY = 'l#pm8d*xj3au@a7grrjv$g6))cu@**_0=!0otpzpq41nbmlupw*8SupraBaktiMandiri(7^2b7**787989)DLmhG==+9765576Hbj'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -76,8 +76,10 @@ WSGI_APPLICATION = 'beltcarepro.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE'    :   'django.db.backends.postgresql',
+        'USER'      :   'beltcarepro',
+        'NAME'      :   'beltcarepro',
+        'PASSWORD'  :   'suprabakti',
     }
 }
 
