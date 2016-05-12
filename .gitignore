@@ -20,6 +20,8 @@ lib64/
 parts/
 sdist/
 var/
+
+beltcarepro/base/migrations
 *.egg-info/
 .installed.cfg
 *.egg
