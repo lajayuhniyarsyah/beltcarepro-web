@@ -57,7 +57,7 @@ ROOT_URLCONF = 'beltcarepro.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'template/'),os.path.join(BASE_DIR, 'base/template')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -76,14 +76,17 @@ WSGI_APPLICATION = 'beltcarepro.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
+
 DATABASES = {
     'default': {
+
         'ENGINE'    :   'django.db.backends.postgresql',
         'USER'      :   'beltcarepro',
         'NAME'      :   'beltcarepro',
         'PASSWORD'  :   'suprabakti',
     }
 }
+
 
 
 # Password validation
@@ -122,4 +125,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
+
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+    # '/var/www/static/',
+]
+STATIC_ROOT = os.path.join(BASE_DIR, "static_admin/")
