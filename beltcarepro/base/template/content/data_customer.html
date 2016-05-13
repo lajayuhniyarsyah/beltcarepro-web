@@ -58,13 +58,19 @@
 							</tr>
 						</thead>
 						<tbody>
-					
-							{% for i in range %}
+							<!-- {{object_list}} -->
+							{% for i in object_list %}
 						   
 								<tr>
-									<td>FREEPORT INDONESIA {{i}}</td>
-									<td class="center">PT</td>
-									<td class="center">Active</td>
+									<td>{{i.name}}</td>
+									<td class="center">{{i.co_type}}</td>
+									<td class="center">
+									{% if i.active %}
+									    Active
+									{% else %}
+										Non Active
+									{% endif %}
+									</td>
 									<td>
 										<center>
 											<a href="home.php?page=edit_customer" class="btn btn-secondary btn-sm btn-icon icon-left">
