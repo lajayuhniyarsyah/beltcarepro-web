@@ -26,7 +26,7 @@ urlpatterns = [
     url(r'^data_customer/','base.views.data_customer'),
     url(r'^data_site/','base.views.data_site'),
     url(r'^detail_conveyor_condition/','base.views.detail_conveyor_condition'),
-     url(r'^login/','base.views.login'),
+     url(r'^login/','base.views.login_custom'),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
