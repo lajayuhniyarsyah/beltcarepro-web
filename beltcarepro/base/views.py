@@ -15,8 +15,18 @@ def dashboard(request):
 	return render (request,template,context)
 
 def data_conveyor(request):
-	context = {}
+	context = {"range":range(100)}
 	template = "content/data_conveyor.html"
+	return render (request,template,context)
+
+def view_conveyor(request):
+	context = {"range":range(100)}
+	template = "content/view_conveyor.html"
+	return render (request,template,context)
+
+def add_conveyor(request):
+	context = {"range":range(8)}
+	template = "content/add_conveyor.html"
 	return render (request,template,context)
 
 def data_customer(request):
@@ -47,6 +57,21 @@ def view_site(request):
 def add_customer_site(request):
 	context = {}
 	template = "content/add_customer_site.html"
+	return render (request,template,context)
+
+def data_area(request):
+	context = {"range":range(100)}
+	template = "content/data_area.html"
+	return render (request,template,context)
+
+def view_area(request):
+	context = {"range":range(5)}
+	template = "content/view_area.html"
+	return render (request,template,context)
+
+def add_area(request):
+	context = {"range":range(4)}
+	template = "content/add_area.html"
 	return render (request,template,context)
 
 def detail_conveyor_condition(request):
