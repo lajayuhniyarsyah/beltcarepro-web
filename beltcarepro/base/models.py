@@ -1,5 +1,6 @@
 from __future__ import unicode_literals
 from django.contrib import admin
+from django.core.validators import MinLengthValidator
 
 from django.db import models
 
@@ -8,15 +9,15 @@ class Customer(models.Model):
 	name = models.CharField(max_length=50, unique=True, blank=False)
 	description = models.TextField()
 	CO_TYPE = (
-		('pt','PT'),
-		('cv','CV'),
+		('PT','PT'),
+		('CV','CV'),
 	)
-	co_type = models.CharField(max_length=50, choices=CO_TYPE, blank=False)
+	co_type = models.CharField(max_length=5, choices=CO_TYPE, blank=False)
 	active = models.BooleanField(default=True)
 
 	def create(self):
 		return True
-		
+
 	def __unicode__(self):
 		return self.name
 
@@ -53,7 +54,7 @@ class Area(models.Model):
 		return True
 
 class Conveyor(models.Model):
-	code = models.CharField(max_length=20, blank=False)
+	code = models.CharField(max_length=25, blank=False)
 	description = models.TextField()
 	active = models.BooleanField()
 	# status = function
@@ -66,7 +67,7 @@ class Conveyor(models.Model):
 		return True
 
 class ConveyorAsset(models.Model):
-	code = models.CharField(max_length=20, blank=False)
+	code = models.CharField(max_length=14, blank=False)
 	description = models.TextField()
 	active = models.BooleanField()
 	STATUS = (
@@ -76,10 +77,10 @@ class ConveyorAsset(models.Model):
 		('lvl3','lvl3'),
 		('lvl4','lvl4'),
 	)
-	status = models.CharField(max_length=50, choices=STATUS)
+	status = models.CharField(max_length=5, choices=STATUS)
 	installed_date = models.DateField(blank=False)
 
-	# part = models.ForeignKey('Part')
+	part = models.ForeignKey('Part')
 	conveyor = models.ForeignKey('Conveyor', blank=False, on_delete=models.PROTECT, related_name='assets')
 	brand = models.ForeignKey('BrandList', on_delete=models.PROTECT)
 
@@ -90,7 +91,44 @@ class Brandlist(models.Model):
 	name =  models.CharField(max_length=50, blank=False, unique=True)
 	active = models.BooleanField() 
 
+class Part(models.Model):
+	name = models.CharField(max_length=120, blank=False, unique=True)
+	code = models.CharField(max_length=3, validators=[MinLengthValidator(3)], blank=False, unique=True)
+	IMPORTANT_LEVEL = (
+		(1,1),
+		(2,2),
+		(3,3),
+		(4,4),
+	)
+	important_level = models.CharField(max_length=5, choices=IMPORTANT_LEVEL)
+	POINT = (
+		(10,10),
+		(8,8),
+		(5,5),
+		(1,1),
+	)
+	point = models.CharField(max_length=5, choices=POINT)
+	icon = models.FileField()
 
+	depend = models.ForeignKey('Part', blank=True, related_name='childs')
+
+	def create(self):
+		return True
+
+	def update(self):
+		return True
+
+	def delete(self):
+		return True
+
+class PartTypeList(models.Model):
+	name = models.CharField(max_length=50, blank=False)
+	code = models.CharField(max_length=3, blank=False)
+
+	part = models.ForeignKey('Part', blank=False, related_name='types')
+
+	def create(self):
+		return True
 
 
 
