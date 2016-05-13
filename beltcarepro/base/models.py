@@ -21,9 +21,6 @@ class Customer(models.Model):
 	def __unicode__(self):
 		return self.name
 
-class CustomerAdmin(admin.ModelAdmin):
-	list_display = ('name', 'description', 'co_type', 'active') 
-
 class Site(models.Model):
 	name = models.CharField(max_length=50, unique=True, blank=False)
 	description = models.TextField()
@@ -42,6 +39,9 @@ class Site(models.Model):
 
 	def delete(self):
 		return True
+
+class CustomerAdmin(admin.ModelAdmin):
+	list_display = ('name', 'description', 'co_type', 'active') 
 
 class Area(models.Model):
 	name = models.CharField(max_length=50, unique=True, blank=False)
@@ -129,7 +129,3 @@ class PartTypeList(models.Model):
 
 	def create(self):
 		return True
-
-
-
-

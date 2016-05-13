@@ -24,9 +24,14 @@ urlpatterns = [
     url(r'^dashboard/','base.views.dashboard'),
     url(r'^data_conveyor/','base.views.data_conveyor'),
     url(r'^data_customer/','base.views.data_customer'),
+    url(r'^view_customer/','base.views.view_customer'),
+    url(r'^add_customer/','base.views.add_customer'),
     url(r'^data_site/','base.views.data_site'),
+    url(r'^view_site/','base.views.view_site'),
+    url(r'^add_customer_site/','base.views.add_customer_site'),
     url(r'^detail_conveyor_condition/','base.views.detail_conveyor_condition'),
-     url(r'^login/','base.views.login_custom'),
+     url(r'^login/','base.views.login'),
+
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

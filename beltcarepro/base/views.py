@@ -11,13 +11,16 @@ def index(request):
 
 
 def dashboard(request):
+
 	if not request.user.is_authenticated():
 		return redirect('%s' % ("/"))
 	context = {}
+
 	template = "content/dashboard.html"
 	return render (request,template,context)
 
 def data_conveyor(request):
+
 	if not request.user.is_authenticated():
 		return redirect('%s' % ("/"))
 	context = {}
@@ -25,28 +28,45 @@ def data_conveyor(request):
 	return render (request,template,context)
 
 def data_customer(request):
+
 	if not request.user.is_authenticated():
 		return redirect('%s' % ("/"))
-	context = {}
+
 	context = {"range":range(100)}
 	template = "content/data_customer.html"
 	return render (request,template,context)
+def view_customer(request):
+	context = {"range":range(10)}
+	template = "content/view_customer.html"
+	return render (request,template,context)
+
+def add_customer(request):
+	context = {}
+	template = "content/add_customer.html"
+	return render (request,template,context)
 
 def data_site(request):
-	if not request.user.is_authenticated():
-		return redirect('%s' % ("/"))
-	context = {}
+	context = {"range":range(100)}
 	template = "content/data_site.html"
 	return render (request,template,context)
 
+def view_site(request):
+	context = {"range":range(10)}
+	template = "content/view_site.html"
+	return render (request,template,context)
+
+def add_customer_site(request):
+	context = {}
+	template = "content/add_customer_site.html"
+	return render (request,template,context)
+
 def detail_conveyor_condition(request):
-	if not request.user.is_authenticated():
-		return redirect('%s' % ("/"))
 	context = {"part":["Belt Conveyor","SECTION SPLICE BELT","Pulley","ROLLER","PRIMARY Cleaners","Secondary Cleaners"]}
 	template = "content/detail_conveyor_condition.html"
 	return render (request,template,context)
 
-def login_custom(request):
+
+def login(request):
 
 	if request.method == 'POST':   
 		username = request.POST['username']
