@@ -15,6 +15,8 @@ from .models import *
 
 
 def index(request):
+	if request.user.is_authenticated():
+		return redirect('%s' % ("/dashboard/"))
 	context = {}
 	template = "index.html"
 	return render (request,template,context)
@@ -25,11 +27,6 @@ class Dashboard(LoginRequiredMixin, View):
 	def get(self, request):
 		context = {}
 		template = "content/dashboard.html"
-		Customers = Customer.objects.all()
-		for customer in Customers:
-			print customer.id,"---->>"
-			for site in customer.sites.all():
-				print "Site ->",site.name			
 		return render (request, template, context)
 
 
@@ -49,24 +46,51 @@ class CustomerList(LoginRequiredMixin, ListView):
 
 
 def data_conveyor(request):
+
 	if not request.user.is_authenticated():
 		return redirect('%s' % ("/"))
 	context = {}
 	template = "content/data_conveyor.html"
 	return render (request,template,context)
-def data_site(request):
+
+def data_customer(request):
+
 	if not request.user.is_authenticated():
 		return redirect('%s' % ("/"))
+
+	context = {"range":range(100)}
+	template = "content/data_customer.html"
+	return render (request,template,context)
+def view_customer(request):
+	context = {"range":range(10)}
+	template = "content/view_customer.html"
+	return render (request,template,context)
+
+def add_customer(request):
 	context = {}
+	template = "content/add_customer.html"
+	return render (request,template,context)
+
+def data_site(request):
+	context = {"range":range(100)}
 	template = "content/data_site.html"
 	return render (request,template,context)
 
+def view_site(request):
+	context = {"range":range(10)}
+	template = "content/view_site.html"
+	return render (request,template,context)
+
+def add_customer_site(request):
+	context = {}
+	template = "content/add_customer_site.html"
+	return render (request,template,context)
+
 def detail_conveyor_condition(request):
-	if not request.user.is_authenticated():
-		return redirect('%s' % ("/"))
 	context = {"part":["Belt Conveyor","SECTION SPLICE BELT","Pulley","ROLLER","PRIMARY Cleaners","Secondary Cleaners"]}
 	template = "content/detail_conveyor_condition.html"
 	return render (request,template,context)
+
 
 def login_custom(request):
 
@@ -80,9 +104,9 @@ def login_custom(request):
 				login(request,login_form)
 				response_data['accessGranted'] = 'Success!'
 				response_data['result'] = 'Success!'
-				response_data['message'] = 'You"re logged in' 		
+				response_data['message'] = 'You"re logged in'
 		else:
 			response_data['result'] = 'failed'
-			response_data['message'] = 'You messed up'   
-		print response_data['result'],"<<<<<<<<<<<<<<<"
+			response_data['message'] = 'You messed up'  
+		
 		return HttpResponse(json.dumps(response_data), content_type="application/json")  
