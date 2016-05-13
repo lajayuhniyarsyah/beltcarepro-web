@@ -79,10 +79,10 @@ WSGI_APPLICATION = 'beltcarepro.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE':'django.db.backends.postgresql',
-        'USER':'beltcarepro',
-        'NAME':'beltcarepro',
-        'PASSWORD':'suprabakti',
+        'ENGINE'    :   'django.db.backends.postgresql',
+        'USER'      :   'beltcarepro',
+        'NAME'      :   'beltcarepro',
+        'PASSWORD'  :   'suprabakti',
     }
 }
 
