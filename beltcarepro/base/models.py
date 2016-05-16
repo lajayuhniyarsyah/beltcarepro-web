@@ -21,6 +21,9 @@ class Customer(models.Model):
 	def __unicode__(self):
 		return self.name
 
+class CustomerAdmin(admin.ModelAdmin):
+	list_display = ('name', 'description', 'co_type', 'active')
+
 class Site(models.Model):
 	name = models.CharField(max_length=50, unique=True, blank=False)
 	description = models.TextField()
@@ -38,10 +41,13 @@ class Site(models.Model):
 		return True
 
 	def delete(self):
-		return True
+		return True 
+		
+	def __unicode__(self):
+		return self.name
 
-class CustomerAdmin(admin.ModelAdmin):
-	list_display = ('name', 'description', 'co_type', 'active') 
+class SiteAdmin(admin.ModelAdmin):
+	list_display = ('name', 'description', 'active', 'customer')
 
 class Area(models.Model):
 	name = models.CharField(max_length=50, unique=True, blank=False)
@@ -52,6 +58,9 @@ class Area(models.Model):
 
 	def create(self):
 		return True
+
+class AreaAdmin(admin.ModelAdmin):
+	list_display = ('name', 'description', 'active', 'site')
 
 class Conveyor(models.Model):
 	code = models.CharField(max_length=25, blank=False)
@@ -65,6 +74,9 @@ class Conveyor(models.Model):
 
 	def create(self):
 		return True
+
+class ConveyorAdmin(admin.ModelAdmin):
+	list_display = ('code', 'description', 'active', 'layout', 'site', 'area')
 
 class ConveyorAsset(models.Model):
 	code = models.CharField(max_length=14, blank=False)
