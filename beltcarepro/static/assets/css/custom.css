@@ -1,0 +1,64 @@
+/**
+ *
+ * Apply your custom CSS here
+ *
+*/
+
+body {	
+}
+
+a {
+}
+.color1{
+	background-color: #A70BEA;
+}
+.spacebuttom{
+	margin-bottom: 30px;
+}
+.fontblack{
+	color: #000;
+}
+#partcondition tspan{
+	background-color: red !important;
+	color: red !important;
+}
+.modal-image{
+	width: 100%;
+
+}
+
+/*CSS Image Crop Thumbnail*/
+.cropthumbnail {
+  position: relative;
+  width: 30px;
+  height: 20px;
+  overflow: hidden;
+  float: left;
+  margin-left: 5px;
+}
+.cropthumbnail img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: 100%;
+  width: auto;
+-webkit-transform: translate(-50%,-50%);
+-ms-transform: translate(-50%,-50%);
+transform: translate(-50%,-50%);
+}
+.cropthumbnail img.portrait {
+  width: 100%;
+  height: auto;
+}
+.btn {
+  border-radius: 0;
+  font-size: 12px;
+  line-height: -2.5;
+  padding: 3px 3px;
+}
+
+
+.highcharts-title tspan{
+	display: block !important;
+	background-color: red !important;
+}

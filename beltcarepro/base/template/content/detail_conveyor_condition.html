@@ -1,3 +1,4 @@
+
 {% extends "base.html" %}
 {% block content %}
 
@@ -36,46 +37,46 @@
 </script>
 
 
-{% for i in part %}
-	{{i}}
-	<script type="text/javascript">
-		$(function () {
-		    $(.part+{{i}}).highcharts({
-		        chart: {
-		            type: 'pie',
-		            options3d: {
-		                enabled: true,
-		                alpha: 45
-		            }
-		        },
-		        title: {
-		            text: '<?php echo strtoupper($part[$i]) ?>'
-		        },
-		        plotOptions: {
-		            pie: {
-		                innerSize: 100,
-		                depth: 45,
-		                dataLabels: {
-	                        enabled: false
-	                    },
-		            }
-		        },
-		        colors: ['#d5080f', '#f7aa47', '#0e62c7', '#069FAD', '#68b828'],
-		        series: [{
-		            name: 'Delivered amount',
-		            data: [
-		               	 ['Problem Lvl4', 2],
-			             ['Problem Lvl3', 4],
-						 ['Problem Lvl2', 6],
-			             ['Problem Lvl1', 7],
-			             ['Running Well', 12],
-		            ]
-		        }]
-		    });
-		});
-	</script>		
 
-{% endfor %}
+	
+<script type="text/javascript">
+	$(function () {
+	    $(".partStatus").highcharts({
+	        chart: {
+	            type: 'pie',
+	            options3d: {
+	                enabled: true,
+	                alpha: 45
+	            }
+	        },
+	        /*title: {
+	            text: ''
+	        },*/
+	        plotOptions: {
+	            pie: {
+	                innerSize: 100,
+	                depth: 45,
+	                dataLabels: {
+                        enabled: false
+                    },
+	            }
+	        },
+	        colors: ['#d5080f', '#f7aa47', '#0e62c7', '#069FAD', '#68b828'],
+	        series: [{
+	            name: 'Delivered amount',
+	            data: [
+	               	 ['Problem Lvl4', 2],
+		             ['Problem Lvl3', 4],
+					 ['Problem Lvl2', 6],
+		             ['Problem Lvl1', 7],
+		             ['Running Well', 12],
+	            ]
+	        }]
+	    });
+	});
+</script>
+
+
 <div class="page-title">
 	<div class="title-env">
 		<h1 class="title">Conveyor Condition </h1>
@@ -144,6 +145,14 @@
 </div>
 
 <div class="col-sm-12" id="partcondition">
+
+	{% for i in part %}
+		a cnnsklcnsaklscnklnaskl<br/>
+		<div class="col-sm-4">
+		<div class="partStatus"></div>
+		</div>	
+		
+	{% endfor %}
 
 </div>
 <div style="clear:both;"></div>

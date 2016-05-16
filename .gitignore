@@ -20,6 +20,8 @@ lib64/
 parts/
 sdist/
 var/
+
+beltcarepro/base/migrations
 *.egg-info/
 .installed.cfg
 *.egg
@@ -99,3 +101,4 @@ target/
 .Trashes
 ehthumbs.db
 Thumbs.db
+assets/*
