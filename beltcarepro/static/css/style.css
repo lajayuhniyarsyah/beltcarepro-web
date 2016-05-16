@@ -5,6 +5,50 @@
 .center{
   text-align: center;
 }
+.sparator{
+  clear:both
+}
+.panel-body{
+  color: black !Important;
+}
+.nav.nav-tabs > li.active > a{
+  background-color: #1BBC9B;
+  color: white;
+}
+.nav.nav-tabs > li > a {
+    background-color: #f4f4f4;
+    border: medium none;
+    cursor: pointer;
+    margin-right: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.text-right{
+  text-align: right !Important;
+  float: right !Important;
+}
+.text-center{
+  text-align: center; !Important;
+}
+
+.font-bold{
+  font-weight: bold;
+}
+.font16{
+  font-size: 16px;
+}
+.judul-detail{
+  font-size: 12px;
+}
+.images-conveyor{
+  float: left;
+  top: 0px;
+}
+
+
+
+
+
 
 /* ================== css Animation ================ */
 .element {

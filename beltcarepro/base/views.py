@@ -41,26 +41,62 @@ class CustomerList(LoginRequiredMixin, ListView):
 		return context
 
 
+class SiteList(LoginRequiredMixin, ListView):
+	login_url ='/'
+	template_name = "content/data_site.html"
+	model = Site
+
+	def get_context_data(self, **kwargs):
+		context = super(SiteList, self).get_context_data(**kwargs)
+
+		return context
+
+
+class AreaList(LoginRequiredMixin, ListView):
+	login_url ='/'
+	template_name = "content/data_area.html"
+	model = Area
+
+	def get_context_data(self, **kwargs):
+		context = super(AreaList, self).get_context_data(**kwargs)
+
+		return context
+
+
+class ConveyorList(LoginRequiredMixin, ListView):
+	login_url ='/'
+	template_name = "content/data_conveyor.html"
+	model = Conveyor
+
+	def get_context_data(self, **kwargs):
+		context = super(ConveyorList, self).get_context_data(**kwargs)
+
+		return context
+
+
+class ConveyorAssetList(LoginRequiredMixin, ListView):
+	login_url ='/'
+	template_name = "content/data_conveyor_asset.html"
+	model = ConveyorAsset
+
+	def get_context_data(self, **kwargs):
+		context = super(ConveyorAssetList, self).get_context_data(**kwargs)
+
+		return context
+		
 
 # class CustomerDetail(LoginRequiredMixin, DetailView):
 
-
-def data_conveyor(request):
-
-	if not request.user.is_authenticated():
-		return redirect('%s' % ("/"))
-	context = {}
-	template = "content/data_conveyor.html"
-	return render (request,template,context)
-
-def data_customer(request):
-
-	if not request.user.is_authenticated():
-		return redirect('%s' % ("/"))
-
+def view_conveyor(request):
 	context = {"range":range(100)}
-	template = "content/data_customer.html"
+	template = "content/view_conveyor.html"
 	return render (request,template,context)
+
+def add_conveyor(request):
+	context = {"range":range(8)}
+	template = "content/add_conveyor.html"
+	return render (request,template,context)
+
 def view_customer(request):
 	context = {"range":range(10)}
 	template = "content/view_customer.html"
@@ -71,11 +107,6 @@ def add_customer(request):
 	template = "content/add_customer.html"
 	return render (request,template,context)
 
-def data_site(request):
-	context = {"range":range(100)}
-	template = "content/data_site.html"
-	return render (request,template,context)
-
 def view_site(request):
 	context = {"range":range(10)}
 	template = "content/view_site.html"
@@ -84,6 +115,16 @@ def view_site(request):
 def add_customer_site(request):
 	context = {}
 	template = "content/add_customer_site.html"
+	return render (request,template,context)
+
+def view_area(request):
+	context = {"range":range(5)}
+	template = "content/view_area.html"
+	return render (request,template,context)
+
+def add_area(request):
+	context = {"range":range(4)}
+	template = "content/add_area.html"
 	return render (request,template,context)
 
 def detail_conveyor_condition(request):
